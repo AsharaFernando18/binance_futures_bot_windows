@@ -207,8 +207,9 @@ class Strategy:
         # Convert to quantity based on price
         quantity = position_value / price
         
-        # Round to appropriate precision (this would need to be adjusted per symbol)
-        # For simplicity, we'll round to 5 decimal places
+        # TODO: Fetch symbol-specific quantity precision from exchange info.
+        # The rounding to 5 decimal places is a placeholder and may not be suitable for all symbols.
+        # Example: precision = self.exchange.markets[symbol]['precision']['amount']
         quantity = round(quantity, 5)
         
         return quantity
@@ -244,7 +245,9 @@ class Strategy:
             if config.USE_TAKE_PROFIT:
                 take_profit = price * (1 - config.TAKE_PROFIT_PERCENT)
         
-        # Round to appropriate precision
+        # TODO: Fetch symbol-specific price precision from exchange info.
+        # The rounding to 2 decimal places is a placeholder and may not be suitable for all symbols.
+        # Example: precision = self.exchange.markets[symbol]['precision']['price']
         stop_loss = round(stop_loss, 2)
         take_profit = round(take_profit, 2)
         

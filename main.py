@@ -68,7 +68,16 @@ class TradingBot:
             # Initialize data fetcher
             self.logger.info("Initializing data fetcher...")
             self.data_fetcher = DataFetcher()
-            await self.data_fetcher.initialize()
+            try:
+                await self.data_fetcher.initialize()
+            except Exception as e:
+                self.logger.error("Failed to initialize DataFetcher or fetch top symbols: %s", str(e))
+                if self.telegram_bot: # Check if telegram_bot is initialized
+                    await self.telegram_bot.send_error_notification(
+                        "Bot initialization failed: Could not fetch top symbols. "
+                        "Please check logs. Bot will not start."
+                    )
+                return False
             
             # Initialize feature engineering
             self.logger.info("Initializing feature engineering...")

@@ -85,7 +85,7 @@ class DataFetcher:
             # Fetch recent performance data
             performance_data = []
             
-            for symbol in futures_symbols[:20]:  # Limit to first 20 for efficiency
+            for symbol in futures_symbols:  # Iterate over all symbols
                 # Fetch 1-day candles for the past week
                 candles = await self.exchange.fetch_ohlcv(
                     symbol, 
@@ -129,8 +129,8 @@ class DataFetcher:
             
         except Exception as e:
             logger.exception("Error getting top symbols: %s", str(e))
-            # Return some default symbols if there's an error
-            return ["BTC/USDT", "ETH/USDT", "BNB/USDT"]
+            # Re-raise the exception to be handled by the caller
+            raise
     
     async def fetch_historical_data(self) -> None:
         """Fetch historical OHLCV data for all symbols and timeframes."""

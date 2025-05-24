@@ -13,8 +13,10 @@ from datetime import datetime, timedelta
 BINANCE_API_KEY = os.environ.get("BINANCE_API_KEY", "")
 BINANCE_SECRET_KEY = os.environ.get("BINANCE_SECRET_KEY", "")
 
-# Testnet flag - Always true for safety
-USE_TESTNET = True
+# Testnet flag - Defaults to True for safety.
+# Set USE_TESTNET environment variable to "false" (case-insensitive) to use live environment.
+raw_use_testnet = os.getenv("USE_TESTNET", "true")
+USE_TESTNET = raw_use_testnet.lower() != "false"
 
 # Telegram Configuration
 TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN", "")

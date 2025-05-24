@@ -55,6 +55,8 @@ The trading bot is built with a modular architecture, with each component respon
    export BINANCE_SECRET_KEY="your_binance_secret_key_here"
    export TELEGRAM_TOKEN="your_telegram_bot_token_here"
    export TELEGRAM_CHAT_ID="your_telegram_chat_id_here"
+   # Set to "false" to use the live Binance environment, defaults to "true" (testnet)
+   export USE_TESTNET="true" 
    ```
    
    **For Windows (start_bot.bat):**
@@ -63,13 +65,23 @@ The trading bot is built with a modular architecture, with each component respon
    set BINANCE_SECRET_KEY=your_binance_secret_key_here
    set TELEGRAM_TOKEN=your_telegram_bot_token_here
    set TELEGRAM_CHAT_ID=your_telegram_chat_id_here
+   REM Set to "false" to use the live Binance environment, defaults to "true" (testnet)
+   set USE_TESTNET=true
    ```
 
 ## Configuration
 
-The bot's behavior can be customized by editing the parameters in `config.py`:
+The bot's behavior can be customized by editing the parameters in `config.py` or by setting environment variables.
 
-### Trading Parameters
+### Environment Variables
+
+- `BINANCE_API_KEY`: Your Binance API key.
+- `BINANCE_SECRET_KEY`: Your Binance secret key.
+- `TELEGRAM_TOKEN`: Your Telegram bot token (optional).
+- `TELEGRAM_CHAT_ID`: Your Telegram chat ID (optional).
+- `USE_TESTNET`: Set to `false` to use the live Binance environment. Defaults to `true` (testnet mode for safety).
+
+### Trading Parameters (in `config.py`)
 
 - `MAX_OPEN_POSITIONS`: Maximum number of open positions (default: 3)
 - `POSITION_SIZE_PERCENT`: Position size as percentage of account balance (default: 5%)
