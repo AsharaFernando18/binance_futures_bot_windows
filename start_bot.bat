@@ -4,8 +4,8 @@ REM This script sets environment variables and starts the trading bot
 
 REM Set environment variables for API keys and Telegram credentials
 REM Replace these with your actual keys and credentials
-set BINANCE_API_KEY=81d681c4ec00baf96bfb6aa3684eb5fd7e89999e151082545c0844df97058bb2
-set BINANCE_SECRET_KEY=0d28e5004b7960e67d005b82fe2a7f5502eadde707d63da78ba3867b70331baf
+set BINANCE_API_KEY=
+set BINANCE_SECRET_KEY=
 set TELEGRAM_TOKEN=your_telegram_bot_token_here
 set TELEGRAM_CHAT_ID=your_telegram_chat_id_here
 
